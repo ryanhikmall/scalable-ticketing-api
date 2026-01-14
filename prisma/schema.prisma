@@ -1,0 +1,30 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  totalTickets Int     // Total stok tiket awal
+  availableTickets Int // Stok yang tersisa (Kritikal untuk race condition)
+  createdAt   DateTime @default(now())
+  orders      Order[]
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  userId    String   // Simulasi ID user
+  quantity  Int
+  status    String   // PENDING, CONFIRMED, CANCELLED
+  createdAt DateTime @default(now())
+  
+  event     Event    @relation(fields: [eventId], references: [id])
+}
