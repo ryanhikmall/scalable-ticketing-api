@@ -1,11 +1,19 @@
+// src/app.module.ts
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { BullModule } from '@nestjs/bull';
 import { EventsModule } from './events/events.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
-  imports: [EventsModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    BullModule.forRoot({
+      redis: {
+        host: 'localhost',
+        port: 6379,
+      },
+    }),
+    EventsModule,
+    OrdersModule,
+  ],
 })
 export class AppModule {}
