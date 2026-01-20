@@ -31,7 +31,7 @@ Backend API system designed to handle high-traffic ticket sales (Flash Sale scen
 
 ### 2. API Documentation (Swagger)
 
-![Swagger Screenshot](https://via.placeholder.com/800x400?text=Please+Upload+Swagger+Screenshot+Here)
+![Swagger Screenshot](https://github.com/user-attachments/assets/8a1a3528-fb07-4a3e-b229-ee33bacce283)
 
 ## 📦 Installation & Setup
 
